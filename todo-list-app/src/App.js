@@ -8,6 +8,10 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
 
+  const reorderTodos = (newOrder) => {
+    setTodos(newOrder);
+  };
+
   const addTodo = (text) => {
     setTodos([...todos, { text, completed: false }]);
   };
@@ -47,6 +51,7 @@ function App() {
                     removeTodo={removeTodo}
                     toggleTodo={toggleTodo}
                     updateTodo={updateTodo}
+                    reorderTodos={reorderTodos}
           />
       </div>
     </div>
