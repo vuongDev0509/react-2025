@@ -1,8 +1,5 @@
 import TodoItem from './TodoItem';
-
 function TodoList({ todos, removeTodo, toggleTodo, updateTodo }) {
-    console.log(todos)
-    console.log("TodoList")
     return (
         <div className="vv-toto-app__list"> 
             {todos.map((todo, index) => (

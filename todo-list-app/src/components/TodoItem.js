@@ -6,6 +6,7 @@ function TodoItem({ todo, index, key, removeTodo, toggleTodo, updateTodo }) {
     const [editValue, setEditValue] = useState(todo.text);
 
     const handleEdit = () =>{
+        console.log("test handleEdit")
         setIsEditing(true)
     }
 

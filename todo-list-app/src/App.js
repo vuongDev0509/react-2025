@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid'; 
 import './App.css';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 import SearchItem from './components/SearchTodoItem';
+import SortableTodoList from './components/SortableTodoList';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -13,7 +15,7 @@ function App() {
   };
 
   const addTodo = (text) => {
-    setTodos([...todos, { text, completed: false }]);
+    setTodos([...todos, { id: uuidv4(), text, completed: false }]);
   };
 
   const removeTodo = (index) =>{
@@ -37,6 +39,9 @@ function App() {
     todo.text.toLowerCase().includes(searchTerm.toLowerCase())
   );
   
+  // console.log(todos)
+  // console.log("check todoss")
+
   return (
     <div className="vv-toto-app"> 
       <div className='vv-toto-app-inner'> 
@@ -47,11 +52,12 @@ function App() {
             onChange={setSearchTerm} 
           />
 
-          <TodoList todos={filteredTodos}
+          <SortableTodoList todos={filteredTodos}
                     removeTodo={removeTodo}
                     toggleTodo={toggleTodo}
                     updateTodo={updateTodo}
                     reorderTodos={reorderTodos}
+                    setTodos={setTodos}
           />
       </div>
     </div>
