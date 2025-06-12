@@ -111,13 +111,13 @@
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  gap: 16px;
   width: 100%;
 }
 
 .vv-toto-app__list .todo-item label{
-  color:#09090b
+  color:#09090b;
+  width: 100%;
 }
 
 .vv-toto-app__list .todo-item button{
@@ -148,6 +148,13 @@
   padding: 0;
   color: #09090b;
   font-size: 18px;
+}
+
+.vv-toto-app__list .todo-item input[type="checkbox"]{
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
 }
 
 .vv-toto-app__search input{

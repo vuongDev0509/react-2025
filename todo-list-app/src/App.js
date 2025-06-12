@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid'; 
 import './App.css';
 import TodoInput from './components/TodoInput';
@@ -7,8 +7,17 @@ import SearchItem from './components/SearchTodoItem';
 import SortableTodoList from './components/SortableTodoList';
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const saved = localStorage.getItem('todos');
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const [searchTerm, setSearchTerm] = useState('');
+
+  // Sync todos state to localStorage every time it changes
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const reorderTodos = (newOrder) => {
     setTodos(newOrder);
@@ -52,7 +61,7 @@ function App() {
             onChange={setSearchTerm} 
           />
 
-          <SortableTodoList todos={filteredTodos}
+          <TodoList todos={filteredTodos}
                     removeTodo={removeTodo}
                     toggleTodo={toggleTodo}
                     updateTodo={updateTodo}
