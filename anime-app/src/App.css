@@ -1,0 +1,166 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+body{
+  background: #f4faff;
+}
+
+.container{
+  width: 100%;
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 20px;
+}
+
+
+.vv-anime-inner{
+  display: flex;
+  gap: 32px;
+}
+
+.vv-anime-sedebar{
+  width: 100%;
+  max-width: 250px;
+  background-color: #fff;
+  padding: 24px 16px;
+  border-radius: 20px;
+  box-shadow: 0px 20px 50px 0px rgba(0, 75, 141, .1);
+}
+
+ul.vv-anime-filter__list{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+ul.vv-anime-filter__list > li{
+  width: 100%;
+  list-style-type: none;
+}
+
+.vv-anime__list{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+
+.vv-anime__list .item-anime{
+  border: 1px solid var(--Gray-300, #D0D5DD);
+  background: #fff;
+  box-shadow: 0px 20px 50px 0px rgba(0, 75, 141, .1);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.vv-anime__list .item-anime-inner{
+  padding: 24px;
+}
+
+.item-anime h3{
+  margin-top: 0;
+}
+
+.item-anime-meta{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-anime-meta p{
+  margin: 0;
+}
+
+.item-anime__score{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 8px;
+}
+
+.item-anime__score svg{
+  width: 100%;
+  height: auto;
+  max-width: 20px;
+}
+
+.item-anime__score svg path{
+  fill:#f0b100;
+}
+
+.vv-anime__list .item-anime__image img{
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.vv-anime-content{
+  width: 100%;
+}
+
+.vv-anime-search{
+  padding: 0px 12px  0 0 ;
+  border-radius: 4px;
+  border: 1px solid var(--Gray-300, #D0D5DD);
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vv-anime-search svg{
+  width: 100%;
+  height: auto;
+  max-width: 20px;
+}
+
+.vv-anime-search input{
+  width: 100%;
+  height: 100%;
+  padding: 12px 0 12px 12px;
+  border: none;
+}
+
+.vv-anime-search input:focus-visible{
+  outline:none;
+}
