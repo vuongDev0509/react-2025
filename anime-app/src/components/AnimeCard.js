@@ -1,4 +1,4 @@
-function AnimeCard ({anime}){
+function AnimeCard ({anime, toggleWishlist, isInWishlist}){
     const image = anime.images.webp.image_url;
     const type  = anime.type
     const score = anime.score
@@ -23,6 +23,10 @@ function AnimeCard ({anime}){
                         </p>
                     }
                 </div>
+
+                <button className="item-anime__btn" onClick={() => toggleWishlist(anime)}>
+                    {isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
+                </button>
 
             </div>
         </div>
