@@ -1,16 +1,23 @@
+import {Link } from 'react-router-dom';
+
 function AnimeCard ({anime, toggleWishlist, isInWishlist}){
     const image = anime.images.webp.image_url;
     const type  = anime.type
     const score = anime.score
+
+    console.log(anime)
+
     return(
-        <div className="item-anime"> 
+        <div className="item-anime">  
             {image && 
                 <div className="item-anime__image"> 
                     <img src={image} alt={anime.title} /> 
                 </div>
             }
             <div className="item-anime-inner"> 
-                <h3>{anime.title}</h3>
+                <h3>
+                    <Link to={`/anime/${anime.mal_id}`}>{anime.title}</Link>
+                </h3>
                 <div className="item-anime-meta"> 
                     { type &&
                         <p className="item-anime__type"> {type} </p>

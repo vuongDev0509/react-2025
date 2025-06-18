@@ -118,6 +118,14 @@ ul.vv-anime-filter__list > li{
   margin-top: 0;
 }
 
+.item-anime h3 > a{
+  font-size: inherit;
+  color: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  text-decoration: none;
+}
+
 .item-anime-meta{
   display: flex;
   align-items: center;
@@ -202,6 +210,28 @@ ul.vv-anime-filter__list > li{
 
 .vv-anime-header__menu li{
   list-style-type: none;
+}
+
+.vv-anime-header__menu li.nav-item__wishlist a{
+  position: relative;
+}
+
+.vv-anime-header__menu li.nav-item__wishlist a span{
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  font-size: 11px;
+  line-height: 130%;
+  font-weight: 400;
+  background: #000;
+  color: #fff;
+  position: absolute;
+  right: -20px;
+  top: -10px;
+  border-radius: 50%;
 }
 
 .vv-anime-header__menu li a{

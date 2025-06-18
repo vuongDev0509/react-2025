@@ -1,5 +1,5 @@
-import { Routes, Route, Link } from 'react-router-dom';
-function Header (){
+import {Link } from 'react-router-dom';
+function Header ({wishlistCount}){
     return(
         <div className="vv-anime-header">
             <div className='container'> 
@@ -8,8 +8,8 @@ function Header (){
                         <Link to='/'>Home</Link>
                     </li>
 
-                    <li>
-                        <Link to='/wishlist'>My Wishlist</Link>
+                    <li className='nav-item__wishlist'>
+                        <Link to='/wishlist'>My Wishlist<span>{wishlistCount}</span></Link>
                     </li>
                 </ul>
             </div>

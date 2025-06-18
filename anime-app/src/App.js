@@ -9,12 +9,21 @@ import AnimeFilter from './components/AnimeFilter';
 import AnimeSearch from './components/AnimeSearch';
 import Header from './components/Header';
 import Wishlist from './pages/Wishlist';
+import SingleAnime from './pages/SingleAnime';
 
 function App() {
   const [animeList, setAnimeList] = useState([]);
   const [selectedType, setSelectedType] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [wishlist, setWishlist] = useState([]);
+
+  const [wishlist, setWishlist] = useState(() => {
+    const saved = localStorage.getItem('wishlist');
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  }, [wishlist]);
 
   useEffect(() => {
     // Call API when component is first loaded
@@ -30,10 +39,6 @@ function App() {
     fetchAnime()
   }, []);
 
-  // const filteredAnimeList =
-  // selectedType.length === 0
-  //   ? animeList
-  //   : animeList.filter(anime => selectedType.includes(anime.type));
 
   // Filter the anime list based on the selected type (selectedType) and the search keyword (searchQuery)
   const filteredAnimeList = animeList.filter(anime => {
@@ -64,7 +69,7 @@ function App() {
 
   return (
     <div className="vv-anime"> 
-      <Header />
+      <Header wishlistCount={wishlist.length} />
       <div className="container"> 
         <Routes> 
           <Route
@@ -95,6 +100,8 @@ function App() {
               <Wishlist wishlist={wishlist} toggleWishlist={toggleWishlist}/>
             }
           />
+
+          <Route path="/anime/:id" element={<SingleAnime />} />
         </Routes>
       </div>
     </div>

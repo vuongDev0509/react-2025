@@ -6,9 +6,9 @@ function Wishlist({wishlist, toggleWishlist}){
                 <p>You haven't added anything yet.</p>
             ) : (
                 <AnimeList
-                animeList={wishlist}
-                wishlist={wishlist}
-                toggleWishlist={toggleWishlist}
+                    animeList={wishlist}
+                    wishlist={wishlist}
+                    toggleWishlist={toggleWishlist}
                 />
             )}
         </div>
