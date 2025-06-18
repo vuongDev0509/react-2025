@@ -10,16 +10,23 @@ import AnimeSearch from './components/AnimeSearch';
 import Header from './components/Header';
 import Wishlist from './pages/Wishlist';
 import SingleAnime from './pages/SingleAnime';
+import Pagination from './components/Pagination';
 
 function App() {
-  const [animeList, setAnimeList] = useState([]);
+  const [animeList, setAnimeList]       = useState([]);
   const [selectedType, setSelectedType] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery]   = useState('');
+  const [currentPage, setCurrentPage]   = useState(1);
+  const itemsPerPage = 12;
 
   const [wishlist, setWishlist] = useState(() => {
     const saved = localStorage.getItem('wishlist');
     return saved ? JSON.parse(saved) : [];
   });
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchQuery, selectedType]);  
 
   useEffect(() => {
     localStorage.setItem('wishlist', JSON.stringify(wishlist));
@@ -51,6 +58,13 @@ function App() {
     // Only keep anime that satisfies both conditions: the correct type and the correct keywords.
     return matchType && matchTitle;
   });
+
+  const indexOfLastItem  = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentAnimeList = filteredAnimeList.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredAnimeList.length / itemsPerPage);
+
+
 
   // Add or remove from wishlist
   const toggleWishlist = (anime) => {
@@ -85,10 +99,18 @@ function App() {
                   </div>
                   <div className='vv-anime-content'> 
                     <h1>List Anime</h1>
-                    <AnimeList animeList={filteredAnimeList} 
+                    <AnimeList animeList={currentAnimeList} 
                                wishlist={wishlist}
                                toggleWishlist={toggleWishlist}
                     />
+
+                    { totalPages > 1 &&
+                        <Pagination
+                          currentPage={currentPage}
+                          totalPages={totalPages}
+                          setCurrentPage={(page) => setCurrentPage(page)}
+                        />
+                    }
                   </div>
               </div>
             }
