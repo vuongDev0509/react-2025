@@ -22,11 +22,16 @@ import {
   function SortableTodoList({ todos, setTodos, removeTodo, toggleTodo, updateTodo }) {
     // Define drag-and-drop sensors: mouse/touch (Pointer) and keyboard
     const sensors = useSensors(
-      useSensor(PointerSensor),
+      useSensor(PointerSensor, {
+        activationConstraint: {
+          distance: 5, //enable drag if mouse moves >= 5px
+        },
+      }),
       useSensor(KeyboardSensor, {
-        coordinateGetter: sortableKeyboardCoordinates, // helps with keyboard dragging
+        coordinateGetter: sortableKeyboardCoordinates,
       })
     );
+    
   
     // Callback when drag ends
     const handleDragEnd = (event) => {
@@ -43,9 +48,6 @@ import {
       }
     };
   
-    // Debug log to see when the component renders
-    console.log("check SortableTodoList â");
-  
     return (
       // DndContext wraps the entire drag-and-drop system
       <DndContext
@@ -59,17 +61,17 @@ import {
           strategy={verticalListSortingStrategy} // items are sorted vertically
         >
           {/* Main container for the todo list */}
-          <div className="vv-toto-app__list demo_vv">
+          <div className="vv-toto-app__list">
             {/* Map through todos and render SortableTodoItem for each */}
             {todos.map((todo, index) => (
               <SortableTodoItem
                 key={todo.id}     // unique React key
                 id={todo.id}      // id for dnd-kit
                 index={index}     // index in the list
-                todo={todo}       // todo item data
-                removeTodo={removeTodo}       // delete handler
-                toggleTodo={toggleTodo}       // complete/uncomplete handler
-                updateTodo={updateTodo}       // edit handler
+                todo={todo}    
+                removeTodo={removeTodo}    
+                toggleTodo={toggleTodo}       
+                updateTodo={updateTodo}  
               />
             ))}
           </div>

@@ -61,7 +61,7 @@ function App() {
             onChange={setSearchTerm} 
           />
 
-          <TodoList todos={filteredTodos}
+          <SortableTodoList todos={filteredTodos}
                     removeTodo={removeTodo}
                     toggleTodo={toggleTodo}
                     updateTodo={updateTodo}
