@@ -1,0 +1,13 @@
+@import "./scss/components/_all.scss";
+
+
+body{
+    background: #f3f4f6;
+}
+
+.container{
+    width: 100%;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
